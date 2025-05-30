@@ -1,0 +1,289 @@
+/* =====================
+   COLORS & VARIABLES
+===================== */
+:root {
+  --primary-color: #4f6f52;
+  --secondary-color: #ede9d5;
+  --bg-light: #f3f8f4;
+  --accent-color: #d4a373;
+  --text-dark: #2e2e2e;
+}
+
+/* Arabic Font */
+body {
+  font-family: 'Tajawal', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6')
+      no-repeat center center/cover;
+  min-height: 100vh;
+
+  .container {
+    .display-hero {
+      margin-top: 30%;
+    }
+    .card {
+      // customize card styles here if needed
+    }
+
+    .img {
+      width: 100%;
+
+      img {
+        width: 500px;
+      }
+    }
+  }
+}
+
+/* Header */
+// offers
+.offer {
+  background-color: #e5f3e1;
+  border-top: 2px solid #4f6f52;
+  border-bottom: 2px solid #4f6f52;
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.offer-text {
+  white-space: nowrap;
+  position: absolute;
+  animation: scrollText 15s linear infinite;
+  font-size: 1.2rem;
+  color: #4f6f52;
+  font-weight: bold;
+  padding: 0 20px;
+}
+
+@keyframes scrollText {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+// about us
+#about h2 {
+  font-weight: bold;
+}
+
+#about img {
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+/*Category*/
+.category-filter .btn.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+/*Category*/
+/* Product Card */
+.product-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  .card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease-in-out;
+    background-color: #ffffff;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-img-top {
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s;
+      border-bottom: 1px solid #eee;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .card-body {
+      padding: 1.5rem;
+
+      .card-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .card-text {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      .product-price {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #28a745;
+        margin-top: 0.5rem;
+      }
+
+      .order-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 16px;
+        background-color: var(--accent-color);
+        color: #fff;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: darken(#d4a373, 10%);
+        }
+      }
+    }
+  }
+}
+
+/* Social Icons */
+.social-icons {
+  a {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: var(--primary-color);
+      color: white !important;
+    }
+  }
+}
+
+/* RTL Fixes */
+[dir='rtl'] {
+  .navbar-brand {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+
+  .me-3 {
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+  }
+}
+
+/* Animation */
+@keyframes scrollText {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #ffffff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.5s ease;
+
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #28a745;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+
+  .loading-text {
+    font-size: 1.2rem;
+    color: #28a745;
+    font-weight: bold;
+    font-family: 'Tajawal', sans-serif;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// svg
+body::before,
+body::after {
+  content: 'test';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background-image: url('/assets/img/leaves-5.png');
+  background-repeat: repeat-y;
+  background-size: contain;
+  z-index: -1;
+  opacity: 0.2;
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
+  }
+}
+
+/* Mega Menu Glass Style */
+.mega-menu-glass {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 80vw;
+  background-color: rgba(255, 255, 255, 0.85); /* شفافية */
+  backdrop-filter: blur(10px); /* تأثير زجاجي */
+  padding: 2rem 0;
+  z-index: 999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: none;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(10px);
+  &.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    border-radius: 10px;
+  }
+}
+.dropdown-item {
+  color: #333;
+  padding: 5px 0;
+  transition: 0.2s;
+  &:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+}
