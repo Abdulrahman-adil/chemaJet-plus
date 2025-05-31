@@ -48,13 +48,13 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 // // update
 // // bring the button
-// const updateProduct = document.getElementById("update-products");
-// if (updateProduct) {
-//   updateProduct.addEventListener("click", async () => {
-//     await upsertProducts();
-//     await updateProduct(container);
-//   });
-// }
+const updateProduct = document.getElementById("update-products");
+if (updateProduct) {
+  updateProduct.addEventListener("click", async () => {
+    await upsertProducts();
+    await updateProduct(container);
+  });
+}
 
 // mega menu
 const productsLink = document.getElementById("products-link");

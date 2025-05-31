@@ -15,7 +15,7 @@ export function renderProducts(container, products) {
           <a href="https://wa.me/" target="_blank" class="btn btn-success">
             اطلب الآن
           </a>
-          <a href="./product.html?id=${product.id}" class="btn btn-outline-success">
+          <a href="/CHEMAJET-PLUS/product.html?id=${product.id}" class="btn btn-outline-success">
             تفاصيل
           </a>
         </div>
