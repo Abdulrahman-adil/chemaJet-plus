@@ -4,7 +4,7 @@ import {
   doc,
   setDoc,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import { db } from "../firbase/firebase-connection.js";
+import { db } from "../firebase/firebase-connection.js";
 import { products } from "./data.js";
 
 export async function upsertProducts() {
@@ -23,10 +23,18 @@ export async function upsertProducts() {
       if (existingId) {
         const docRef = doc(db, "products", existingId);
         await setDoc(docRef, product, { merge: true });
-        console.log(`${product.productName} : the product has been updated`);
+        console.log(
+          `${
+            product.productName?.en || product.productName
+          } : the product has been updated`
+        );
       } else {
         await setDoc(collection(db, "products"), product);
-        console.log(`${product.productName} : the product has been added`);
+        console.log(
+          `${
+            product.productName?.en || product.productName
+          } : the product has been updated`
+        );
       }
     } catch (error) {
       console.error(`error: ${product.productName}`);

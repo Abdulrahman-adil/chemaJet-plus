@@ -6,7 +6,7 @@ import
   deleteDoc,
   doc,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import { db } from "../firbase/firebase-connection.js";
+import { db } from "../firebase/firebase-connection.js";
 
 export async function deleteAllProducts() {
   try {

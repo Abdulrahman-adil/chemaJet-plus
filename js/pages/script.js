@@ -2,33 +2,34 @@ import { displayProducts } from "../products/display-products.js";
 import { addNewProductsOnly } from "../products/add.js";
 import { search } from "../products/search.js";
 import { filterCategory } from "../products/category.js";
-import { deleteAllProducts } from "../products/delete.js";
+import { renderMegaMenuLinks } from "../products/megaMenu.js";
 import { upsertProducts } from "../products/update.js";
-// loading page
+import { deleteAllProducts } from "../products/delete.js";
+
+// DOMContentLoaded - Main Initialization
 window.addEventListener("DOMContentLoaded", async () => {
-  //  DOM
   const container = document.getElementById("product-container");
   const searchInput = document.getElementById("search-box");
   const addBtn = document.getElementById("add-product");
 
-  // loading products
+  // Load products on page load
   let allProducts = await displayProducts(container);
 
-  // search functionality
+  // Search functionality
   if (searchInput) {
     search(searchInput, allProducts, container);
   }
 
-  // button event listener
+  // Add Product Button
   if (addBtn) {
     addBtn.addEventListener("click", async () => {
       console.log("🟢 تم الضغط على زر Add");
       await addNewProductsOnly();
-      await displayProducts();
+      await displayProducts(container);
     });
   }
 
-  // الكاتيجوري
+  // Filter by Category
   const categoryButtons = document.querySelectorAll(".category-filter .btn");
   categoryButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -37,26 +38,37 @@ window.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
-//delete
-// const removeProducts = document.getElementById("remove-product");
-// removeProducts.addEventListener("click", async () => {
-//   let confirmDelete = confirm("Are you sure you want to delete all products?");
-//   if (confirmDelete) {
-//     await deleteAllProducts();
-//   }
-// });
-
-// // update
-// // bring the button
-const updateProduct = document.getElementById("update-products");
-if (updateProduct) {
-  updateProduct.addEventListener("click", async () => {
+// Update Products Button
+const updateProductBtn = document.getElementById("update-products");
+if (updateProductBtn) {
+  updateProductBtn.addEventListener("click", async () => {
     await upsertProducts();
-    await updateProduct(container);
+    const container = document.getElementById("product-container");
+    if (container) {
+      await displayProducts(container);
+    }
+  });
+}
+// remove Products Button
+const removeProducts = document.getElementById("remove-product");
+if (removeProducts) {
+  removeProducts.addEventListener("click", async () => {
+    const confirmDelete = confirm(
+      "Are you sure you want to delete all products?"
+    );
+    if (confirmDelete) {
+      await deleteAllProducts();
+      const container = document.getElementById("product-container");
+      if (container) {
+        await displayProducts(container);
+      }
+    }
   });
 }
 
-// mega menu
+
+
+// Mega Menu Hover Logic
 const productsLink = document.getElementById("products-link");
 const megaMenu = document.getElementById("mega-menu");
 
@@ -70,7 +82,7 @@ if (productsLink && megaMenu) {
       if (!megaMenu.matches(":hover")) {
         megaMenu.classList.remove("show");
       }
-    }, 300);
+    }, 200);
   });
 
   megaMenu.addEventListener("mouseenter", () => {
@@ -82,4 +94,6 @@ if (productsLink && megaMenu) {
   });
 }
 
-// ✅ إخفاء اللودينج بعد تحميل الصفحة بالكامل
+// Render Mega Menu Links
+const megaMenuContainer = document.getElementById("mega-menu-container");
+renderMegaMenuLinks(megaMenuContainer);

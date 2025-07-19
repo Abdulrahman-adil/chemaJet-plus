@@ -3,16 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>شركة Chemajet - المنتجات الطبيعية</title>
-    <!-- Bootstrap 5 RTL CSS -->
+    <title data-i18n="page_title">Chemajet Company - Natural Products</title>
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- Bootstrap 5 CSS (dynamically switched in lang-switcher.js) -->
     <link
+      id="bootstrap-css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     />
-    <!-- Tajawal Arabic Font -->
+    <!-- Fonts: Tajawal for Arabic, Inter/Roboto for English -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&family=Tajawal:wght@400;700&display=swap"
     />
     <!-- Font Awesome -->
     <link
@@ -21,15 +24,20 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
-    <!--animation-->
     <link rel="stylesheet" href="css/animate.css" />
+    <!-- Inline Styles -->
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="./assets/img/logo.png" alt="Chemajet" height="40" />
+          <img
+            src="assets/img/logo.png"
+            alt="Chemajet Logo"
+            height="40"
+            loading="lazy"
+          />
         </a>
         <button
           class="navbar-toggler"
@@ -42,49 +50,66 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="./index.html">الرئيسية</a>
+              <a class="nav-link active" href="index.html">
+                <i class="fas fa-home me-1" data-i18n="nav_home"></i>
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./about.html">عن الشركة</a>
+              <a class="nav-link" href="about.html">
+                <i class="fas fa-info-circle me-1" data-i18n="nav_about"></i>
+              </a>
             </li>
-            <li class="nav-item position-relative">
-              <a class="nav-link" href="#" id="products-link">منتجاتنا</a>
-              <div class="mega-menu-glass" id="mega-menu">
+            <li class="nav-item position-relative" id="products-link">
+              <a class="nav-link" href="#" data-i18n="nav_products">منتجاتنا</a>
+              <div
+                class="mega-menu-glass position-absolute bg-white p-3 shadow"
+                id="mega-menu"
+              >
                 <div class="container py-4">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <h6 class="text-success fw-bold">زيوت طبيعية</h6>
-                      <ul class="list-unstyled">
-                        <li>
-                          <a class="dropdown-item" href="#">زيت الأرغان</a>
-                        </li>
-                        <li><a class="dropdown-item" href="#">زيت اللوز</a></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-3">
-                      <h6 class="text-success fw-bold">زيوت عطرية</h6>
-                      <ul class="list-unstyled">
-                        <li><a class="dropdown-item" href="#">زيت الورد</a></li>
-                        <li>
-                          <a class="dropdown-item" href="#">زيت السترونيلا</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-md-6 d-none d-md-block text-center">
-                      <img
-                        src="./assets/img/ment.jpg"
-                        class="img-fluid rounded shadow-sm"
-                        style="max-height: 200px"
-                        alt="صورة"
-                      />
-                    </div>
+                  <div class="row" id="mega-menu-container">
+                    <!-- هنا المنتجات هتتحط ديناميك من JS -->
                   </div>
                 </div>
               </div>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#contact">تواصل معنا</a>
+              <a class="nav-link" href="#contact">
+                <i class="fas fa-phone-alt me-1" data-i18n="nav_contact"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="langDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://flagcdn.com/gb.svg"
+                  alt="Lang"
+                  width="20"
+                  class="me-2"
+                />
+                <span data-i18n="language">Language</span>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end shadow-sm border-0"
+                aria-labelledby="langDropdown"
+              >
+                <li>
+                  <a class="dropdown-item" href="#" onclick="setLang('en')">
+                    🇬🇧 English
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" onclick="setLang('ar')">
+                    🇸🇦 العربية
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -96,42 +121,49 @@
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-lg-8 text-white">
-            <h1 class="display-hero fw-bold mb-4">
-              اكتشف قوة الطبيعة مع Chemajet
+            <h1 class="display-hero fw-bold mb-4" data-i18n="hero_title">
+              Discover the Power of Nature with Chemajet
             </h1>
-            <p class="lead mb-4">
-              أفضل الزيوت والمستخلصات الطبيعية للعناية الصحية والجمالية
+            <p class="lead mb-4" data-i18n="hero_subtitle">
+              The best natural oils and extracts for health and beauty
             </p>
             <div class="d-flex gap-3">
-              <a href="#products" class="btn btn-warning btn-lg px-4"
-                >استكشف المنتجات</a
+              <a
+                href="#products"
+                class="btn btn-warning btn-lg px-4"
+                data-i18n="explore_products"
               >
-              <!-- <a href="search.html" class="btn btn-outline-light btn-lg px-4"
-                >بحث متقدم</a
-              > -->
+                Explore Products
+              </a>
             </div>
           </div>
         </div>
       </div>
     </header>
-    <!--Offer-->
+
+    <!-- Offer -->
     <div class="offer">
-      <div class="offer-text">
-        🌿 اكتشف مجموعتنا من الزيوت الطبيعية - جودة مضمونة وأسعار تنافسية 🌿
+      <div class="offer-text" data-i18n="offer_text">
+        🌿 Discover our range of natural oils - guaranteed quality and
+        competitive prices 🌿
       </div>
     </div>
-    <!--Offer-->
-    <!--Our Products-->
+
+    <!-- Field of Our Work -->
     <section id="categories" class="py-5 bg-white">
       <div class="container text-center">
-        <h2 class="text-success fw-bold mb-5">مجالات العمل</h2>
+        <h2 class="text-success fw-bold mb-5" data-i18n="field_work">
+          Fields of Work
+        </h2>
         <div class="row g-4 justify-content-center">
           <div class="col-6 col-md-4 col-lg-3 animate-fade-in-up">
             <div
               class="category-icon-box p-4 rounded-4 shadow-sm bg-light h-100"
             >
               <i class="fas fa-flask fa-2x text-success mb-3"></i>
-              <h5 class="fw-bold">Midecal Chemicals</h5>
+              <h5 class="fw-bold" data-i18n="category_medical">
+                Medical Chemicals
+              </h5>
             </div>
           </div>
 
@@ -140,7 +172,9 @@
               class="category-icon-box p-4 rounded-4 shadow-sm bg-light h-100"
             >
               <i class="fas fa-capsules fa-2x text-success mb-3"></i>
-              <h5 class="fw-bold">Pharmaceutical Chemicals</h5>
+              <h5 class="fw-bold" data-i18n="category_pharma">
+                Pharmaceutical Chemicals
+              </h5>
             </div>
           </div>
 
@@ -149,7 +183,7 @@
               class="category-icon-box p-4 rounded-4 shadow-sm bg-light h-100"
             >
               <i class="fas fa-vials fa-2x text-success mb-3"></i>
-              <h5 class="fw-bold">Fine Chemicals</h5>
+              <h5 class="fw-bold" data-i18n="category_fine">Fine Chemicals</h5>
             </div>
           </div>
 
@@ -158,7 +192,9 @@
               class="category-icon-box p-4 rounded-4 shadow-sm bg-light h-100"
             >
               <i class="fas fa-pump-soap fa-2x text-success mb-3"></i>
-              <h5 class="fw-bold">Cosmetic Chemicals</h5>
+              <h5 class="fw-bold" data-i18n="category_cosmetic">
+                Cosmetic Chemicals
+              </h5>
             </div>
           </div>
 
@@ -167,7 +203,9 @@
               class="category-icon-box p-4 rounded-4 shadow-sm bg-light h-100"
             >
               <i class="fas fa-tooth fa-2x text-success mb-3"></i>
-              <h5 class="fw-bold">Dental Ingredients</h5>
+              <h5 class="fw-bold" data-i18n="category_dental">
+                Dental Ingredients
+              </h5>
             </div>
           </div>
 
@@ -176,7 +214,9 @@
               class="category-icon-box p-4 rounded-4 shadow-sm bg-light h-100"
             >
               <i class="fas fa-syringe fa-2x text-success mb-3"></i>
-              <h5 class="fw-bold">Ready – To – Use Reagents</h5>
+              <h5 class="fw-bold" data-i18n="category_reagents">
+                Ready-to-Use Reagents
+              </h5>
             </div>
           </div>
 
@@ -185,7 +225,9 @@
               class="category-icon-box p-4 rounded-4 shadow-sm bg-light h-100"
             >
               <i class="fas fa-microscope fa-2x text-success mb-3"></i>
-              <h5 class="fw-bold">Pathology Chemicals & Stains</h5>
+              <h5 class="fw-bold" data-i18n="category_pathology">
+                Pathology Chemicals & Stains
+              </h5>
             </div>
           </div>
 
@@ -194,7 +236,9 @@
               class="category-icon-box p-4 rounded-4 shadow-sm bg-light h-100"
             >
               <i class="fas fa-balance-scale fa-2x text-success mb-3"></i>
-              <h5 class="fw-bold">Standard & Volumetric Solutions</h5>
+              <h5 class="fw-bold" data-i18n="category_solutions">
+                Standard & Volumetric Solutions
+              </h5>
             </div>
           </div>
 
@@ -203,107 +247,133 @@
               class="category-icon-box p-4 rounded-4 shadow-sm bg-light h-100"
             >
               <i class="fas fa-leaf fa-2x text-success mb-3"></i>
-              <h5 class="fw-bold">Essential Oils & Herbal Extracts</h5>
+              <h5 class="fw-bold" data-i18n="category_essential">
+                Essential Oils & Herbal Extracts
+              </h5>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!--Our Products-->
     <!-- About Section -->
     <section id="about" class="py-5 bg-light">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8 text-center">
-            <h2 class="fw-bold text-success mb-4">من نحن</h2>
-            <p class="lead">
-              شركة Chemajet هي شركة رائدة في إنتاج وتوزيع المنتجات الطبيعية
-              والكيميائية عالية الجودة. نلتزم بالتميز في توفير حلول فعّالة وآمنة
-              لعملائنا في مجالات التجميل، التغذية، والبحوث.
+            <h2 class="fw-bold text-success mb-4" data-i18n="about_title">
+              About Us
+            </h2>
+            <p class="lead" data-i18n="about_description">
+              Chemajet is a leading company in producing and distributing
+              high-quality natural and chemical products. We are committed to
+              excellence in providing effective and safe solutions for our
+              clients in beauty, nutrition, and research.
             </p>
-            <a href="about.html" class="btn btn-success">اقرأ المزيد</a>
+            <a href="about.html" class="btn btn-success" data-i18n="read_more"
+              >Read More</a
+            >
           </div>
         </div>
       </div>
     </section>
-    <div>
-      <button id="add-product" class="btn btn-primary m-3">Add</button>
+
+    <!-- Admin Buttons (Optional, can be hidden based on user role) -->
+    <div class="admin-controls text-center my-3">
+      <button
+        id="add-product"
+        class="btn btn-primary m-3"
+        data-i18n="add_product"
+      >
+        Add
+      </button>
       <button
         id="remove-product"
         onclick="deleteAllProducts()"
         class="btn btn-primary m-3"
+        data-i18n="remove_product"
       >
-        remove
+        Remove
       </button>
-      <button id="update-products" class="btn btn-outline-warning m-3">
+      <button
+        id="update-products"
+        class="btn btn-outline-warning m-3"
+        data-i18n="update_products"
+      >
         Update
       </button>
     </div>
-    <!-- End About Section -->
-    <!--Start Category-->
+
+    <!-- Category Filter -->
     <div class="category-filter text-center my-4">
       <button
         class="btn btn-outline-success mx-1"
         data-category="all"
         onclick="filterCategory(this)"
+        data-i18n="category_all"
       >
-        الكل
+        All
       </button>
       <button
         class="btn btn-outline-success mx-1"
-        data-category="natural-oils"
+        data-category="Oils"
         onclick="filterCategory(this)"
+        data-i18n="category_natural_oils"
       >
-        زيوت طبيعية
+        Natural Oils
       </button>
       <button
         class="btn btn-outline-success mx-1"
         data-category="Chemicals"
         onclick="filterCategory(this)"
+        data-i18n="category_chemicals"
       >
-        كيماويات
+        Chemicals
       </button>
       <button
         class="btn btn-outline-success mx-1"
-        data-category=""
+        data-category="care"
         onclick="filterCategory(this)"
+        data-i18n="category_care"
       >
-        عناية
+        Care
       </button>
     </div>
 
-    <!--End Category-->
-
-    <!-- Start Products Section -->
+    <!-- Products Section -->
     <section id="products" class="py-5">
       <div class="container">
         <div class="row mb-5">
           <div class="col text-center">
-            <h2 class="fw-bold text-success mb-3">منتجات الزيوت الطبيعية</h2>
-            <p class="lead text-muted">تصفح مجموعة منتجاتنا الفريدة</p>
+            <h2 class="fw-bold text-success mb-3" data-i18n="products_title">
+              Our Products
+            </h2>
+            <p class="lead text-muted" data-i18n="products_subtitle">
+              Browse our unique product range
+            </p>
           </div>
         </div>
-        <!--Search on product-->
         <div class="row mb-4">
           <div class="col-md-6 mx-auto">
             <input
               type="text"
               id="search-box"
               class="form-control"
-              placeholder="ابحث عن منتج..."
+              data-i18n="search_placeholder"
+              placeholder="Search for a product..."
             />
           </div>
         </div>
-        <!--Search on product-->
-
         <div class="row" id="product-container">
-          <!-- Products loaded from JSON -->
+          <!-- Products loaded dynamically -->
         </div>
         <div class="row mt-4">
           <div class="col text-center">
-            <a href="search.html" class="btn btn-success btn-lg"
-              >عرض جميع المنتجات</a
+            <a
+              href="/all-products.html"
+              class="btn btn-success btn-lg"
+              data-i18n="view_all_products"
+              >View All Products</a
             >
           </div>
         </div>
@@ -315,8 +385,12 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col text-center">
-            <h2 class="fw-bold text-success">آراء العملاء</h2>
-            <p class="lead text-muted">ما يقولونه عنا</p>
+            <h2 class="fw-bold text-success" data-i18n="testimonials_title">
+              Customer Reviews
+            </h2>
+            <p class="lead text-muted" data-i18n="testimonials_subtitle">
+              What they say about us
+            </p>
           </div>
         </div>
         <div class="row">
@@ -330,10 +404,13 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                 </div>
-                <p class="card-text">
-                  "زيت الأرغان من Chemajet غير روتين العناية ببشرتي تماماً!"
+                <p class="card-text" data-i18n="testimonial_1">
+                  "Chemajet's Argan Oil completely transformed my skincare
+                  routine!"
                 </p>
-                <h5 class="mt-3 mb-0">سارة محمد</h5>
+                <h5 class="mt-3 mb-0" data-i18n="testimonial_1_name">
+                  Sarah Mohammed
+                </h5>
               </div>
             </div>
           </div>
@@ -347,10 +424,13 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                 </div>
-                <p class="card-text">
-                  "جودة المنتجات ممتازة والتوصيل سريع. شكراً Chemajet!"
+                <p class="card-text" data-i18n="testimonial_2">
+                  "Excellent product quality and fast delivery. Thank you,
+                  Chemajet!"
                 </p>
-                <h5 class="mt-3 mb-0">أحمد خالد</h5>
+                <h5 class="mt-3 mb-0" data-i18n="testimonial_2_name">
+                  Ahmed Khaled
+                </h5>
               </div>
             </div>
           </div>
@@ -364,10 +444,13 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
                 </div>
-                <p class="card-text">
-                  "أستخدم زيت النعناع للتدليك يومياً، رائحته منعشة وفعّال."
+                <p class="card-text" data-i18n="testimonial_3">
+                  "I use Peppermint Oil for daily massage; its scent is
+                  refreshing and effective."
                 </p>
-                <h5 class="mt-3 mb-0">نورا عبدالله</h5>
+                <h5 class="mt-3 mb-0" data-i18n="testimonial_3_name">
+                  Noura Abdullah
+                </h5>
               </div>
             </div>
           </div>
@@ -380,13 +463,15 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 mb-5 mb-lg-0">
-            <h2 class="fw-bold text-success mb-4">تواصل معنا</h2>
+            <h2 class="fw-bold text-success mb-4" data-i18n="contact_title">
+              Contact Us
+            </h2>
             <div class="d-flex align-items-start mb-4">
               <div class="me-3 text-success">
                 <i class="fas fa-envelope fa-2x"></i>
               </div>
               <div>
-                <h5 class="mb-1">البريد الإلكتروني</h5>
+                <h5 class="mb-1" data-i18n="contact_email">Email</h5>
                 <p class="mb-0 text-muted">info@chemajet.com</p>
               </div>
             </div>
@@ -395,7 +480,7 @@
                 <i class="fas fa-phone-alt fa-2x"></i>
               </div>
               <div>
-                <h5 class="mb-1">الهاتف</h5>
+                <h5 class="mb-1" data-i18n="contact_phone">Phone</h5>
                 <p class="mb-0 text-muted">0100-123-4567</p>
               </div>
             </div>
@@ -404,39 +489,50 @@
                 <i class="fas fa-map-marker-alt fa-2x"></i>
               </div>
               <div>
-                <h5 class="mb-1">العنوان</h5>
-                <p class="mb-0 text-muted">القاهرة، مصر</p>
+                <h5 class="mb-1" data-i18n="contact_address">Address</h5>
+                <p class="mb-0 text-muted" data-i18n="contact_address_value">
+                  Cairo, Egypt
+                </p>
               </div>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="card shadow-sm">
               <div class="card-body p-4">
-                <h3 class="mb-4">أرسل رسالة</h3>
+                <h3 class="mb-4" data-i18n="contact_form_title">
+                  Send a Message
+                </h3>
                 <form>
                   <div class="mb-3">
                     <input
                       type="text"
                       class="form-control form-control-lg"
-                      placeholder="الاسم"
+                      data-i18n-placeholder="contact_name_placeholder"
+                      placeholder="Name"
                     />
                   </div>
                   <div class="mb-3">
                     <input
                       type="email"
                       class="form-control form-control-lg"
-                      placeholder="البريد الإلكتروني"
+                      data-i18n-placeholder="contact_email_placeholder"
+                      placeholder="Email"
                     />
                   </div>
                   <div class="mb-3">
                     <textarea
                       class="form-control form-control-lg"
                       rows="4"
-                      placeholder="رسالتك"
+                      data-i18n-placeholder="contact_message_placeholder"
+                      placeholder="Your Message"
                     ></textarea>
                   </div>
-                  <button type="submit" class="btn btn-success btn-lg w-100">
-                    إرسال
+                  <button
+                    type="submit"
+                    class="btn btn-success btn-lg w-100"
+                    data-i18n="send_btn"
+                  >
+                    Send
                   </button>
                 </form>
               </div>
@@ -447,127 +543,77 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 mb-4 mb-lg-0">
-            <img
-              src="assets/img/logo.png"
-              alt="شعار Chemajet"
-              height="40"
-              class="mb-3"
-            />
-            <p>رواد المنتجات الطبيعية والزيوت والأعشاب منذ 2010</p>
-            <div class="social-icons">
-              <a
-                href="https://www.facebook.com/profile.php?id=100088657281734"
-                class="text-white me-3"
-                ><i class="fab fa-facebook-f fa-lg"></i
-              ></a>
-              <a href="#" class="text-white me-3"
-                ><i class="fab fa-instagram fa-lg"></i
-              ></a>
-              <a href="#" class="text-white me-3"
-                ><i class="fab fa-twitter fa-lg"></i
-              ></a>
-              <a href="#" class="text-white"
-                ><i class="fab fa-whatsapp fa-lg"></i
-              ></a>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-            <h5 class="mb-4">روابط سريعة</h5>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="#" class="text-white-50 text-decoration-none"
-                  >الرئيسية</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#about" class="text-white-50 text-decoration-none"
-                  >عن الشركة</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#products" class="text-white-50 text-decoration-none"
-                  >المنتجات</a
-                >
-              </li>
-              <li>
-                <a href="#contact" class="text-white-50 text-decoration-none"
-                  >تواصل معنا</a
-                >
-              </li>
-              <li>
-                <a
-                  href="./sales-police.html"
-                  class="text-white-50 text-decoration-none"
-                  >سياسة البيع</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="mb-4">منتجات مميزة</h5>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="#" class="text-white-50 text-decoration-none"
-                  >زيت الأرغان</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-white-50 text-decoration-none"
-                  >زيت اللوز الحلو</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-white-50 text-decoration-none"
-                  >زيت النعناع</a
-                >
-              </li>
-              <li>
-                <a href="#" class="text-white-50 text-decoration-none"
-                  >زيت الورد</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <h5 class="mb-4">النشرة البريدية</h5>
-            <p>اشترك لتصلك آخر العروض والأخبار</p>
-            <div class="input-group mb-3">
-              <input
-                type="email"
-                class="form-control"
-                placeholder="بريدك الإلكتروني"
-              />
-              <button class="btn btn-success" type="button">اشتراك</button>
-            </div>
-          </div>
-        </div>
-        <hr class="my-4 bg-secondary" />
-        <div class="row">
-          <div class="col-md-6 text-center text-md-start">
-            <p class="mb-0">© 2025 شركة Chemajet. جميع الحقوق محفوظة.</p>
-          </div>
-          <div class="col-md-6 text-center text-md-end">
-            <p class="mb-0">
-              تصميم وتطوير
-              <a
-                href="https://abdulrahmanadel.com/"
-                class="text-success text-decoration-none"
-                >Eng-Abdelrahman</a
-              >
-            </p>
-          </div>
+<footer class="bg-dark text-white pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row gy-4">
+      <!-- Logo + About -->
+      <div class="col-md-4">
+        <img
+          src="assets/img/logo.png"
+          alt="Chemajet Logo"
+          height="40"
+          class="mb-3"
+        />
+        <p class="text-white-50 small">
+          روّاد في مجال المنتجات الطبيعية والزيوت والأعشاب منذ عام 2010.
+        </p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-white-50"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white-50"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white-50"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-    </footer>
+
+      <!-- Quick Links -->
+      <div class="col-md-2">
+        <h6 class="text-white mb-3">روابط سريعة</h6>
+        <ul class="list-unstyled small">
+          <li><a href="index.html" class="text-white-50">الرئيسية</a></li>
+          <li><a href="about.html" class="text-white-50">من نحن</a></li>
+          <li><a href="all-products.html" class="text-white-50">منتجاتنا</a></li>
+          <li><a href="contact.html" class="text-white-50">اتصل بنا</a></li>
+          <li><a href="policy.html" class="text-white-50">سياسة البيع</a></li>
+        </ul>
+      </div>
+
+      <!-- Featured Products -->
+      <div class="col-md-3">
+        <h6 class="text-white mb-3">منتجات مميزة</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#" class="text-white-50">زيت الأرغان</a></li>
+          <li><a href="#" class="text-white-50">زيت النعناع</a></li>
+          <li><a href="#" class="text-white-50">زيت جوز الهند</a></li>
+          <li><a href="#" class="text-white-50">زيت الكافور</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-3">
+        <h6 class="text-white mb-3">معلومات الاتصال</h6>
+        <ul class="list-unstyled text-white-50 small">
+          <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> القاهرة، مصر</li>
+          <li class="mb-2"><i class="fas fa-phone me-2"></i> +201122003619</li>
+          <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@chemajet.com</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="border-secondary my-4" />
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <p class="mb-2 mb-md-0 small text-white-50">© 2025 شركة Chemajet. جميع الحقوق محفوظة.</p>
+      <p class="mb-0 small">
+        تصميم وتطوير
+        <a href="https://abdulrahmanadel.com" class="text-success text-decoration-none">Abdulrahman</a>
+      </p>
+    </div>
+  </div>
+</footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- <script type="module" src="js/script.js"></script>
-    <script type="module" src="./js/category.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
     <script type="module" src="js/pages/script.js"></script>
+    <script type="module" src="js/pages/lang-switcher.js"></script>
   </body>
 </html>
