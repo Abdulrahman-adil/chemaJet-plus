@@ -1,5 +1,96 @@
 export const translations = {
   ar: {
+    // سياسه البيع
+    policy_title: "سياسة البيع",
+    policy_prices_title: "أسعار البيع",
+    policy_price_1: "الأسعار المذكورة هي تسليم المصنع.",
+    policy_price_2:
+      "الأسعار محددة وقت طباعة قائمة الأسعار، وهي رهن للتغيير حسب ظروف السوق وبدون إشعار مسبق.",
+    policy_price_3:
+      "تلتزم كيماجيت بالأسعار المقدمة في عرض رسمي طوال فترة الارتباط الموضحة في العرض.",
+    policy_price_4: "الأسعار لا تشمل الضرائب والرسوم الحكومية.",
+    policy_price_5:
+      "يتم تحرير الفاتورة بالأسعار المحددة في القائمة أو حسب عرض الأسعار بعد إضافة الضرائب المقررة.",
+    policy_payment_title: "شروط الدفع",
+    policy_payment_1: "يتم الدفع بتحويل كامل القيمة مقدمًا وقت الطلب.",
+    policy_payment_2:
+      "في حالة التعاقدات أو المناقصات أو الممارسات يتم الاتفاق على أسلوب الدفع مع إدارة المبيعات.",
+    policy_packaging_title: "العبوات القياسية والكميات الكبيرة",
+    policy_packaging_note: "للكميات الأكبر يتم الاتفاق مع إدارة المبيعات.",
+    policy_insurance_title: "تأمين البضائع",
+    policy_insurance_1:
+      "تُعبأ البضائع بعناية فائقة وتشحن تحت مسؤولية ونفقة العميل.",
+    policy_insurance_2: "لا تتحمل الشركة مسؤولية الكسر أو الضياع.",
+    policy_insurance_3: "يمكن التأمين على البضائع حسب رغبة العميل وعلى نفقته.",
+    policy_force_majeure_title: "القوة القهرية",
+    policy_force_majeure_text:
+      "لا تتحمل الشركة نتائج التأخير أو ضياع البضاعة في حالات القوة القهرية كالشغب، الإضرابات، نقص المواد الخام، قدر الله، القيود الحكومية، وغيرها.",
+    policy_return_title: "سياسة الاسترجاع",
+    policy_return_1:
+      "يمكن رد قيمة البضاعة إذا تم إلغاء أمر التوريد قبل الشحن، ويتحمل العميل أي مصاريف أو رسوم.",
+    policy_return_2:
+      "يتم استبدال أو استعادة البضاعة على نفقة الشركة مع رد كامل قيمتها ونولون الشحن فقط في حال وجود خطأ فني من الشركة.",
+    policy_return_3: "على العميل مراعاة ظروف التخزين المدونة على العبوة.",
+    policy_return_4: "تاريخ نهاية الصلاحية مرتبط بشروط التخزين الجيد.",
+    policy_notes_title: "ملاحظات خاصة",
+    policy_note_1:
+      "الكيماويات الصيدلانية والطبية يُدون عليها اسم دستور الأدوية الذي تم إنتاجها على أساسه.",
+    policy_note_2:
+      "الكيماويات المعملية مخصصة للاستخدامات البحثية فقط ما لم يُذكر غير ذلك.",
+    policy_note_3:
+      "يتحمل العميل المسؤولية الفنية والقانونية للبضاعة بمجرد تحميلها على وسيلة الشحن.",
+    policy_note_4:
+      "في كل الحالات ومع كل المنتجات، لا تتحمل الشركة أي مسؤولية تجاه الاستخدام الخاطئ أو غير القانوني من قبل العميل.",
+    policy_note_5: "توقيت توريد الأصناف يخضع لتوافرها وقت الطلب.",
+  },
+  en: {
+    policy_title: "Sales Policy",
+    policy_prices_title: "Pricing",
+    policy_price_1: "Prices quoted are ex-factory.",
+    policy_price_2:
+      "Prices are set at the time of price list printing and subject to change without prior notice.",
+    policy_price_3:
+      "Chemajet commits to official quotation prices for the period specified in the offer.",
+    policy_price_4: "Prices do not include taxes and government fees.",
+    policy_price_5:
+      "Invoices are issued at list or quoted prices with applicable taxes added.",
+    policy_payment_title: "Payment Terms",
+    policy_payment_1:
+      "Full payment must be made in advance at the time of ordering.",
+    policy_payment_2:
+      "For tenders or contracts, payment terms are agreed with the sales department.",
+    policy_packaging_title: "Standard Packaging & Bulk Quantities",
+    policy_packaging_note:
+      "For larger quantities, arrangements are made with the sales department.",
+    policy_insurance_title: "Goods Insurance",
+    policy_insurance_1:
+      "Goods are packed with care and shipped at the customer's responsibility and expense.",
+    policy_insurance_2: "The company is not responsible for damage or loss.",
+    policy_insurance_3:
+      "Goods can be insured upon customer's request and expense.",
+    policy_force_majeure_title: "Force Majeure",
+    policy_force_majeure_text:
+      "The company is not responsible for delays or losses caused by force majeure events such as riots, strikes, raw material shortages, acts of God, government restrictions, etc.",
+    policy_return_title: "Return Policy",
+    policy_return_1:
+      "Goods may be refunded if the order is canceled before shipping, with expenses borne by the customer.",
+    policy_return_2:
+      "Goods are replaced or refunded at the company’s expense only in case of company error.",
+    policy_return_3:
+      "Customers must observe the storage conditions indicated on the packaging.",
+    policy_return_4: "Expiration date depends on proper storage conditions.",
+    policy_notes_title: "Special Notes",
+    policy_note_1:
+      "Pharmaceutical and medical chemicals are labeled with the pharmacopeia reference.",
+    policy_note_2:
+      "Laboratory chemicals are for research use only unless otherwise stated.",
+    policy_note_3:
+      "The customer bears full responsibility for goods once loaded for shipping.",
+    policy_note_4:
+      "The company is not liable for misuse or illegal use of any product by the customer.",
+    policy_note_5:
+      "Delivery timing depends on product availability at the time of order.",
+
     // 🔹 عناصر التنقل (Navbar)
     nav_home: "الرئيسية",
     nav_about: "عن الشركة",
@@ -90,6 +181,53 @@ export const translations = {
   },
 
   en: {
+    // 🔹 Sales Policy
+    policy_title: "Sales Policy",
+    policy_prices_title: "Pricing",
+    policy_price_1: "Prices quoted are ex-factory.",
+    policy_price_2:
+      "Prices are set at the time of price list printing and subject to change without prior notice.",
+    policy_price_3:
+      "Chemajet commits to official quotation prices for the period specified in the offer.",
+    policy_price_4: "Prices do not include taxes and government fees.",
+    policy_price_5:
+      "Invoices are issued at list or quoted prices with applicable taxes added.",
+    policy_payment_title: "Payment Terms",
+    policy_payment_1:
+      "Full payment must be made in advance at the time of ordering.",
+    policy_payment_2:
+      "For tenders or contracts, payment terms are agreed with the sales department.",
+    policy_packaging_title: "Standard Packaging & Bulk Quantities",
+    policy_packaging_note:
+      "For larger quantities, arrangements are made with the sales department.",
+    policy_insurance_title: "Goods Insurance",
+    policy_insurance_1:
+      "Goods are packed with care and shipped at the customer's responsibility and expense.",
+    policy_insurance_2: "The company is not responsible for damage or loss.",
+    policy_insurance_3:
+      "Goods can be insured upon customer's request and expense.",
+    policy_force_majeure_title: "Force Majeure",
+    policy_force_majeure_text:
+      "The company is not responsible for delays or losses caused by force majeure events such as riots, strikes, raw material shortages, acts of God, government restrictions, etc.",
+    policy_return_title: "Return Policy",
+    policy_return_1:
+      "Goods may be refunded if the order is canceled before shipping, with expenses borne by the customer.",
+    policy_return_2:
+      "Goods are replaced or refunded at the company’s expense only in case of company error.",
+    policy_return_3:
+      "Customers must observe the storage conditions indicated on the packaging.",
+    policy_return_4: "Expiration date depends on proper storage conditions.",
+    policy_notes_title: "Special Notes",
+    policy_note_1:
+      "Pharmaceutical and medical chemicals are labeled with the pharmacopeia reference.",
+    policy_note_2:
+      "Laboratory chemicals are for research use only unless otherwise stated.",
+    policy_note_3:
+      "The customer bears full responsibility for goods once loaded for shipping.",
+    policy_note_4:
+      "The company is not liable for misuse or illegal use of any product by the customer.",
+    policy_note_5:
+      "Delivery timing depends on product availability at the time of order.",
     // 🔹 Navbar
     nav_home: "Home",
     nav_about: "About",
